@@ -9,7 +9,7 @@ License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
-Requires: nethserver-mysql,zabbix-server-mysql,zabbix-web-mysql,zabbix-agent,net-snmp-utils,nethserver-net-snmp,php-mysql
+Requires: nethserver-mysql,zabbix30-server-mysql,zabbix30-web-mysql,zabbix30-agent,net-snmp-utils,nethserver-net-snmp,php-mysql
 Conflicts: nethserver-zabbix22, nethserver-zabbix
 BuildRequires: nethserver-devtools net-snmp-utils nethserver-net-snmp
 BuildArch: noarch
