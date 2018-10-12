@@ -1,24 +1,16 @@
 #!/bin/bash
 
-# create and chown logfiles
-#touch /var/log/zabbix/zabbix_agentd.log
-#chown zabbix:zabbix /var/log/zabbix/zabbix_server.log /var/log/zabbix/zabbix_agentd.log
-
 # Create DB and user
 mysql -e "create database zabbix character set utf8 collate utf8_bin;"
 mysql -e "grant all privileges on zabbix.* to zabbix@localhost identified by '$(cat /var/lib/nethserver/secrets/zabbix)';"
-
-
-#echo "create role zabbix with CREATEDB LOGIN PASSWORD '$(cat /var/lib/nethserver/secrets/zabbix)'" | sudo -u postgres psql
-#echo "alter user zabbix with encrypted password '$(cat /var/lib/nethserver/secrets/zabbix)'" | sudo -u postgres psql
-#echo "create database zabbix owner zabbix" | sudo -u postgres psql
 
 # Set zabbix shell to bash for login as zabbix user to write db
 usermod -s /bin/bash zabbix
 
 # Fill DB
-zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p$(cat /var/lib/nethserver/secrets/zabbix) zabbix
-#zcat $(rpm -ql zabbix-server-pgsql | grep create.sql.gz) | sudo -u zabbix psql zabbix
+/usr/bin/mysql zabbix < /usr/share/zabbix-mysql/schema.sql
+/usr/bin/mysql zabbix < /usr/share/zabbix-mysql/images.sql
+/usr/bin/mysql zabbix < /usr/share/zabbix-mysql/data.sql
 
 # Set zabbix shell to /bin/false again for security
 usermod -s /bin/false zabbix

@@ -27,14 +27,6 @@ use Errno;
 use esmith::util;
 use NethServer::Password;
 
-
-## Test if the zabbix Mysql DB exists, if yes, then upgrade it
-#     if ( -d '/var/lib/mysql/zabbix') {
-#        system ('zcat /usr/share/doc/zabbix-server-mysql-*/create.sql.gz | /usr/bin/mysql zabbix');
-#     }
-##test if the mysql db is created, if not then the user and the mysql db are created
-#     if ( ! -d '/var/lib/mysql/zabbix') {
-
 my $password = NethServer::Password::store('zabbix') || die('Could not generate zabbix password!');
 
 exit (0);
