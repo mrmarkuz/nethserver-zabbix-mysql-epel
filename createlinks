@@ -18,7 +18,6 @@ event_actions ($event,
 
 templates2events("/etc/httpd/conf.d/zabbix.conf", $event);
 templates2events("/etc/zabbix_server.conf", $event);
-templates2events("/etc/zabbix/zabbix_agentd.conf", $event);
 templates2events("/etc/zabbix/web/zabbix.conf.php", $event);
 
 #example 1
