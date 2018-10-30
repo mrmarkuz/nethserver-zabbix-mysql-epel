@@ -1,5 +1,5 @@
-Summary: nethserver-zabbix-mysql sets up the monitoring system
-%define name nethserver-zabbix-mysql
+Summary: nethserver-zabbix-mysql-epel sets up the monitoring system
+%define name nethserver-zabbix-mysql-epel
 Name: %{name}
 %define version 0.0.1
 %define release 1
